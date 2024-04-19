@@ -1,0 +1,49 @@
+{
+  "name": "elysia-middleware",
+  "version": "0.0.0",
+  "author": {
+    "name": "TuanKiet",
+    "email": "tuank1792@gmail.com",
+    "url": "https://github.com/GitTuanKiet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GitTuanKiet/elysia-middleware"
+  },
+  "main": "./dist/index.js",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "rimraf": "^5.0.5"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "connect": "^3.7.0",
+    "http-proxy-middleware": "^3.0.0"
+  },
+  "exports": {
+    "bun": "./dist/index.js",
+    "node": "./dist/cjs/index.js",
+    "require": "./dist/cjs/index.js",
+    "import": "./dist/index.js",
+    "default": "./dist/index.js"
+  },
+  "bugs": "https://github.com/GitTuanKiet/elysia-middleware/issues",
+  "description": "Plugin for Elysia for connect middleware",
+  "homepage": "https://github.com/GitTuanKiet/elysia-middleware",
+  "keywords": [
+    "elysia",
+    "connect",
+    "middleware"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "dev": "bun run --hot example/index.ts",
+    "test": "bun test && npm run test:node",
+    "test:node": "npm install --prefix ./__test__/node/cjs/ && npm install --prefix ./__test__/node/esm/ && node ./__test__/node/cjs/index.js && node ./__test__/node/esm/index.js",
+    "build": "rimraf dist && tsc --project tsconfig.esm.json && tsc --project tsconfig.cjs.json",
+    "release": "npm run build && npm run test && npm publish --access public"
+  },
+  "types": "./src/index.ts"
+}
